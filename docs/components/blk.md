@@ -1,0 +1,47 @@
+# blk — virtio-blk
+
+`github.com/go-virtio/blk` is a pure-Go virtio-blk (block device) driver
+for the standard PCI-bound device (VID 0x1AF4, DID 0x1042). It implements
+the modern-transport (Virtio 1.0+) init sequence and the request-queue
+I/O path.
+
+## Scope
+
+Like [`net`](net.md) this package owns device bring-up, the single
+request virtqueue, and the on-the-wire request format — the header + data
++ status **descriptor chain** (Virtio 1.1 §5.2.6, built with
+`common.AddChain`) — exposing a block-level `ReadBlocks` / `WriteBlocks`
+/ `Flush` API. The protocol sector size is always 512 bytes
+(`BlockSize`).
+
+`VIRTIO_BLK_F_RO` is honoured (read-only devices reject writes); no other
+feature bit is negotiated.
+
+The device backing the driver is the host's concern and is transparent to
+the guest — it can be a local disk image **or** a network volume served
+over NBD (with NBD itself tunnelled through WireGuard or TLS). The driver
+just sees a block device.
+
+## Quick start
+
+```go
+import virtioblk "github.com/go-virtio/blk"
+
+vb, err := virtioblk.OpenVirtioBlk(transport)
+if err != nil {
+    return err
+}
+// capacity in sectors and bytes
+_ = vb.Capacity * virtioblk.BlockSize
+
+// Read sectors 0..3 (4 × 512 B).
+data, err := vb.ReadBlocks(0, 4)
+
+// Write two sectors at LBA 100, then flush.
+err = vb.WriteBlocks(100, make([]byte, 2*virtioblk.BlockSize))
+err = vb.Flush()
+```
+
+## License
+
+BSD-3-Clause.

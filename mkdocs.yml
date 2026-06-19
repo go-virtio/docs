@@ -1,0 +1,58 @@
+site_name: go-virtio
+site_description: Pure-Go, transport-agnostic virtio guest drivers — net, rng, vsock, blk, console, balloon, fs, input, sound, plus virtio-gpu (2D + virgl 3D + software 3D) and Venus (Vulkan-over-virtio). No cgo, no kernel.
+site_url: https://go-virtio.github.io/docs/
+repo_url: https://github.com/go-virtio
+repo_name: go-virtio
+edit_uri: ""
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle: { icon: material/weather-night, name: Dark mode }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle: { icon: material/weather-sunny, name: Light mode }
+  features: [navigation.sections, navigation.top, content.code.copy, search.suggest]
+
+extra_css: [stylesheets/brand.css]
+extra:
+  version:
+    provider: mike
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.highlight
+
+nav:
+  - Home: index.md
+  - Components:
+      - Overview: components/index.md
+      - Core:
+          - "common — transport-agnostic infrastructure": components/common.md
+      - Drivers:
+          - "net — virtio-net": components/net.md
+          - "rng — virtio-rng": components/rng.md
+          - "vsock — virtio-vsock": components/vsock.md
+          - "blk — virtio-blk": components/blk.md
+          - "console — virtio-console": components/console.md
+          - "balloon — virtio-balloon": components/balloon.md
+          - "fs — virtio-fs": components/fs.md
+          - "input — virtio-input": components/input.md
+          - "sound — virtio-sound": components/sound.md
+      - GPU:
+          - "gpu — virtio-gpu (2D + virgl 3D + soft3d)": components/gpu.md
+          - "venus — Vulkan-over-virtio": components/venus.md
+      - Validation:
+          - "validate — real-hardware harness": components/validate.md
