@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1119,7 +1119,7 @@ keyboard input plus relative mouse events (the DOOM port's input budget).</p>
 <p>The driver pre-posts buffers on the eventq at bring-up and re-posts the
 same buffer after each successful <code>ReadEvent</code>.</p>
 <h2 id="quick-start">Quick start</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtioinput</span><span class="w"> </span><span class="s">&quot;github.com/go-virtio/input&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtioinput</span><span class="w"> </span><span class="s">"github.com/go-virtio/input"</span>
 
 <span class="nx">vi</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">virtioinput</span><span class="p">.</span><span class="nx">OpenVirtioInput</span><span class="p">(</span><span class="nx">transport</span><span class="p">)</span>
 <span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -1142,7 +1142,7 @@ same buffer after each successful <code>ReadEvent</code>.</p>
 <span class="p">}</span>
 
 <span class="c1">// Non-blocking read (returns ErrEventNotReady if the eventq is empty).</span>
-<span class="nx">ev</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">ReadEvent</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="nx">ev</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">ReadEvent</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="license">License</h2>
 <p>BSD-3-Clause.</p>
@@ -1204,7 +1204,7 @@ same buffer after each successful <code>ReadEvent</code>.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

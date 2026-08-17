@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1146,7 +1146,7 @@ device-writable response), built with <code>common.AddChain</code>.</p>
 <li><code>Framebuffer.Flush</code> pushes the drawn pixels to the host and refreshes
   the scanout (<code>TRANSFER_TO_HOST_2D</code> + <code>RESOURCE_FLUSH</code>).</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtiogpu</span><span class="w"> </span><span class="s">&quot;github.com/go-virtio/gpu&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtiogpu</span><span class="w"> </span><span class="s">"github.com/go-virtio/gpu"</span>
 
 <span class="nx">g</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">virtiogpu</span><span class="p">.</span><span class="nx">OpenVirtioGPU</span><span class="p">(</span><span class="nx">transport</span><span class="p">)</span>
 <span class="nx">displays</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">DisplayInfo</span><span class="p">()</span>
@@ -1154,7 +1154,7 @@ device-writable response), built with <code>common.AddChain</code>.</p>
 
 <span class="nx">fb</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">SetupFramebuffer</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">ScanoutID</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">Width</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">Height</span><span class="p">)</span>
 <span class="c1">// Draw BGRA pixels into fb.Pix, then push to the display.</span>
-<span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fb</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
+<span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fb</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="the-3d-split">The 3D split</h2>
 <p>"Pure-Go 3D" is three different things, and this module makes the split
@@ -1231,7 +1231,7 @@ explicit:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

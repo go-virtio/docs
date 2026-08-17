@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1144,21 +1144,21 @@ the guest — it can be a local disk image <strong>or</strong> a network volume 
 over NBD (with NBD itself tunnelled through WireGuard or TLS). The driver
 just sees a block device.</p>
 <h2 id="quick-start">Quick start</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtioblk</span><span class="w"> </span><span class="s">&quot;github.com/go-virtio/blk&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nx">virtioblk</span><span class="w"> </span><span class="s">"github.com/go-virtio/blk"</span>
 
 <span class="nx">vb</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">virtioblk</span><span class="p">.</span><span class="nx">OpenVirtioBlk</span><span class="p">(</span><span class="nx">transport</span><span class="p">)</span>
 <span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 <span class="c1">// capacity in sectors and bytes</span>
-<span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">Capacity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">virtioblk</span><span class="p">.</span><span class="nx">BlockSize</span>
+<span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">Capacity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">virtioblk</span><span class="p">.</span><span class="nx">BlockSize</span>
 
 <span class="c1">// Read sectors 0..3 (4 × 512 B).</span>
 <span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">ReadBlocks</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
 
 <span class="c1">// Write two sectors at LBA 100, then flush.</span>
-<span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">WriteBlocks</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nx">virtioblk</span><span class="p">.</span><span class="nx">BlockSize</span><span class="p">))</span>
-<span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
+<span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">WriteBlocks</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nx">virtioblk</span><span class="p">.</span><span class="nx">BlockSize</span><span class="p">))</span>
+<span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vb</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="license">License</h2>
 <p>BSD-3-Clause.</p>
@@ -1220,7 +1220,7 @@ just sees a block device.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
