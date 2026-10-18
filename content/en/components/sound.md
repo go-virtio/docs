@@ -1,4 +1,9 @@
-# sound — virtio-sound
+---
+title: "sound — virtio-sound"
+weight: 140
+---
+
+# sound — virtio-sound {#sound-virtio-sound}
 
 `github.com/go-virtio/sound` is a pure-Go virtio-sound driver for the
 standard PCI-bound device (VID 0x1AF4, DID 0x1059, device type 25). It
@@ -16,7 +21,7 @@ issues the minimal PCM stream lifecycle commands (`PCM_INFO`,
 and routes raw signed 16-bit little-endian (`S16_LE`) frames over the PCM
 data queues. Format conversion is the caller's responsibility.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtiosound "github.com/go-virtio/sound"
@@ -51,6 +56,6 @@ if err := vs.PCMStart(0); err != nil {
 }
 ```
 
-## License
+## License {#license}
 
 BSD-3-Clause.

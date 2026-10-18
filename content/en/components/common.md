@@ -1,4 +1,9 @@
-# common — transport-agnostic infrastructure
+---
+title: "common — transport-agnostic infrastructure"
+weight: 40
+---
+
+# common — transport-agnostic infrastructure {#common-transport-agnostic-infrastructure}
 
 `github.com/go-virtio/common` hosts the shared building blocks that every
 virtio device-class driver needs and that do not themselves depend on a
@@ -8,7 +13,7 @@ shared-infrastructure pattern: per-class drivers import this package for
 the transport-independent pieces and provide their own spec-level driver
 on top.
 
-## What it provides
+## What it provides {#what-it-provides}
 
 - **PCI capability walker** (`pci.go`) — parses the standard
   `struct virtio_pci_cap` chain published by every modern virtio device
@@ -28,12 +33,15 @@ on top.
 - **Transport interfaces** (`transport.go`) — `PCIConfigReader`,
   `BARMemoryAccessor`, `PageAllocator`, `Transport`.
 
-!!! note "Endianness"
-    virtio rings and config registers are little-endian on the wire. The
-    `common` ring/register code carries the byte-order handling for the
-    whole driver set; its ring code was recently corrected for
-    big-endian hosts.
+{{< callout type="info" >}}
+**Endianness**
 
-## License
+virtio rings and config registers are little-endian on the wire. The
+`common` ring/register code carries the byte-order handling for the
+whole driver set; its ring code was recently corrected for
+big-endian hosts.
+{{< /callout >}}
+
+## License {#license}
 
 BSD-3-Clause.

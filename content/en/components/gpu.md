@@ -1,4 +1,9 @@
-# gpu — virtio-gpu (2D + virgl 3D + soft3d)
+---
+title: "gpu — virtio-gpu (2D + virgl 3D + soft3d)"
+weight: 160
+---
+
+# gpu — virtio-gpu (2D + virgl 3D + soft3d) {#gpu-virtio-gpu-2d-virgl-3d-soft3d}
 
 `github.com/go-virtio/gpu` is a pure-Go virtio-gpu driver for the
 standard PCI-bound device (VID 0x1AF4, DID 0x1050). It implements the
@@ -11,7 +16,7 @@ queue** (cursorq) — and the on-the-wire virtio-gpu control protocol.
 Every command is a 2-descriptor chain (a read-only request followed by a
 device-writable response), built with `common.AddChain`.
 
-## 2D framebuffer
+## 2D framebuffer {#2d-framebuffer}
 
 The base path is a scanout-enumeration + framebuffer API:
 
@@ -35,7 +40,7 @@ fb, err := g.SetupFramebuffer(d.ScanoutID, d.Width, d.Height)
 err = fb.Flush()
 ```
 
-## The 3D split
+## The 3D split {#the-3d-split}
 
 "Pure-Go 3D" is three different things, and this module makes the split
 explicit:
@@ -48,9 +53,9 @@ explicit:
   drawing — real hardware acceleration, still CGO=0. `ClearScreen`,
   `DrawTriangle` and `DrawTexturedTriangle` are all validated against a
   real virglrenderer (software llvmpipe) via the
-  [`validate`](validate.md) harness.
-- **Vulkan / Venus.** handled by the separate [`venus`](venus.md) module.
+  [`validate`]({{< relref "validate.md" >}}) harness.
+- **Vulkan / Venus.** handled by the separate [`venus`]({{< relref "venus.md" >}}) module.
 
-## License
+## License {#license}
 
 BSD-3-Clause.

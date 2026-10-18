@@ -1,14 +1,19 @@
-# venus — Vulkan-over-virtio
+---
+title: "venus — Vulkan-over-virtio"
+weight: 170
+---
+
+# venus — Vulkan-over-virtio {#venus-vulkan-over-virtio}
 
 `github.com/go-virtio/venus` is the pure-Go (CGO=0) implementation of
 **Venus**, the Vulkan-over-virtio protocol — the guest-side counterpart
-to the [`gpu`](gpu.md) virtio-gpu work. Venus reuses the virtio-gpu
+to the [`gpu`]({{< relref "gpu.md" >}}) virtio-gpu work. Venus reuses the virtio-gpu
 *device* but replaces the whole submission model and serialises
 essentially the entire Vulkan API, so it is a genuinely larger
 undertaking than the virgl/GL path. This repo de-risks it bottom-up, one
 verifiable rung at a time.
 
-## What it provides
+## What it provides {#what-it-provides}
 
 - **`internal/vncs`** — the wire runtime (the `vn_cs.h` equivalent): an
   `Encoder` and a mirroring `Decoder` over a `[]byte`, with LE,
@@ -30,7 +35,7 @@ verifiable rung at a time.
   encoded/decoded bytes are asserted against independently hand-derived
   Mesa bytes — no GPU, no host required.
 
-## End-to-end
+## End-to-end {#end-to-end}
 
 Beyond the offline-verified generator, Venus carries a working
 shared-memory ring transport. A clear-image runs end-to-end on a real
@@ -41,6 +46,6 @@ and executes the clear. **Guest-side pixel readback is closed too**: on a
 Linux render-node host the guest maps the cleared image's
 `HOST3D|MAPPABLE` blob (gbm dma_buf) and reads the texels back as RED.
 
-## License
+## License {#license}
 
 BSD-3-Clause.

@@ -1,4 +1,9 @@
-# input — virtio-input
+---
+title: "input — virtio-input"
+weight: 130
+---
+
+# input — virtio-input {#input-virtio-input}
 
 `github.com/go-virtio/input` is a pure-Go virtio-input driver for the
 standard PCI-bound device (VID 0x1AF4, DID 0x1052). It implements the
@@ -17,7 +22,7 @@ keyboard input plus relative mouse events (the DOOM port's input budget).
 The driver pre-posts buffers on the eventq at bring-up and re-posts the
 same buffer after each successful `ReadEvent`.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtioinput "github.com/go-virtio/input"
@@ -46,6 +51,6 @@ case virtioinput.EvSyn:
 ev, err = vi.ReadEvent(false)
 ```
 
-## License
+## License {#license}
 
 BSD-3-Clause.

@@ -1,4 +1,9 @@
-# validate — real-hardware validation harness
+---
+title: "validate — real-hardware harness"
+weight: 190
+---
+
+# validate — real-hardware validation harness {#validate-real-hardware-validation-harness}
 
 `github.com/go-virtio/validate` is a **real-hardware validation harness**
 for the go-virtio guest drivers. It boots a bare-metal
@@ -6,10 +11,10 @@ for the go-virtio guest drivers. It boots a bare-metal
 real virtio devices with the pure-Go go-virtio drivers, and asserts the
 result — going beyond unit tests with a fake device.
 
-## What it proves (end-to-end)
+## What it proves (end-to-end) {#what-it-proves-end-to-end}
 
 A TamaGo guest enumerates PCI, binds a `common.Transport` to a QEMU
-device, and runs the real driver path. For [`gpu`](gpu.md):
+device, and runs the real driver path. For [`gpu`]({{< relref "gpu.md" >}}):
 `OpenVirtioGPU → DisplayInfo → SetupFramebuffer → soft3d.RenderCube →
 Flush`, and the host `screendump` shows a shaded 3D cube:
 
@@ -27,7 +32,7 @@ stack.) Two real bugs surfaced here that a fake-device unit test cannot
 catch: the PCI config cap-walk needs dword-granular byte extraction, and
 `screendump` must target the virtio-gpu rather than q35's default VGA.
 
-## Arch notes
+## Arch notes {#arch-notes}
 
 - **x86_64 under TCG.** TamaGo has no arm64 QEMU-`virt` board and HVF only
   accelerates arm64 guests, so x86_64 TamaGo runs under
@@ -39,17 +44,17 @@ catch: the PCI config cap-walk needs dword-granular byte extraction, and
   with port-mapped PCI config (0xcf8/0xcfc), BAR-window MMIO, and
   `dma.Reserve`-backed page allocation.
 
-## vtest/ — virgl 3D and Venus validation
+## vtest/ — virgl 3D and Venus validation {#vtest-virgl-3d-and-venus-validation}
 
 `vtest/` is a pure-Go (CGO=0) client for virglrenderer's **vtest**
 protocol (`virgl_test_server` over a Unix socket — Mesa's CI method,
 software-rendered with llvmpipe, no GPU). `vtest/cmd/validator` feeds
-[`gpu`](gpu.md)'s actual virgl command buffers to a real
+[`gpu`]({{< relref "gpu.md" >}})'s actual virgl command buffers to a real
 `virgl_test_server`, reads the framebuffer back, and asserts the pixels.
 It validates virgl CLEAR / triangle / textured-triangle draws and the
-full [`venus`](venus.md) clear-image-with-readback path. The protocol
+full [`venus`]({{< relref "venus.md" >}}) clear-image-with-readback path. The protocol
 client is 100%-unit-tested offline.
 
-## License
+## License {#license}
 
 BSD-3-Clause.
