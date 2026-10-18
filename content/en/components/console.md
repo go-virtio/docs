@@ -1,4 +1,9 @@
-# console — virtio-console
+---
+title: "console — virtio-console"
+weight: 100
+---
+
+# console — virtio-console {#console-virtio-console}
 
 `github.com/go-virtio/console` is a pure-Go virtio-console driver for the
 standard PCI-bound device (VID 0x1AF4, DID 0x1043). It implements the
@@ -18,7 +23,7 @@ The driver pre-posts one-page device-writable buffers on the receiveq at
 bring-up so the device has somewhere to land guest input, and posts
 device-readable buffers on demand in `Write`.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtioconsole "github.com/go-virtio/console"
@@ -38,6 +43,6 @@ if _, err := vc.Write([]byte("hello from the guest\n")); err != nil {
 in, err := vc.Read(10000)
 ```
 
-## License
+## License {#license}
 
 BSD-3-Clause.

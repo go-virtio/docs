@@ -1,4 +1,9 @@
-# rng — virtio-rng
+---
+title: "rng — virtio-rng"
+weight: 70
+---
+
+# rng — virtio-rng {#rng-virtio-rng}
 
 `github.com/go-virtio/rng` is a pure-Go virtio-rng (virtio-entropy)
 driver for the standard PCI-bound device (VID 0x1AF4, DID 0x1044). It
@@ -10,9 +15,9 @@ one virtqueue (the "requestq"), no device-specific feature bits, and no
 device-config region. The driver posts a device-writable buffer; the
 device fills it with random bytes and reports — via the used ring — how
 many bytes it wrote. Every transport-level operation routes through
-[`common`](common.md)'s `Transport` interface.
+[`common`]({{< relref "common.md" >}})'s `Transport` interface.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtiorng "github.com/go-virtio/rng"
@@ -36,6 +41,6 @@ n, err := vr.ReadPoll(buf, 50000)
 `OpenVirtioRng` leaves the device in DRIVER_OK state with an empty,
 ready request queue; the driver posts a buffer on demand in `Read`.
 
-## License
+## License {#license}
 
 BSD-3-Clause.

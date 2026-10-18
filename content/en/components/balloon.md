@@ -1,4 +1,9 @@
-# balloon — virtio-balloon
+---
+title: "balloon — virtio-balloon"
+weight: 110
+---
+
+# balloon — virtio-balloon {#balloon-virtio-balloon}
 
 `github.com/go-virtio/balloon` is a pure-Go virtio-balloon (memory
 balloon) driver for the standard PCI-bound device (VID 0x1AF4, DID
@@ -16,7 +21,7 @@ Only `VIRTIO_F_VERSION_1` is negotiated — in particular
 exactly two queues (inflateq = 0, deflateq = 1) and there is no stats
 queue.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtioballoon "github.com/go-virtio/balloon"
@@ -42,12 +47,15 @@ single device-readable DMA buffer (at most 256 PFNs per buffer; larger
 requests are chunked), posts it to inflateq or deflateq, rings the
 doorbell, and busy-polls the used ring.
 
-!!! note "`actual` is tracked driver-side only"
-    The spec asks the driver to write the current balloon size back to
-    the device-config `actual` field (Virtio 1.1 §5.5.6.1). The driver
-    tracks `Actual` on the driver side rather than writing it back to the
-    device config.
+{{< callout type="info" >}}
+**`actual` is tracked driver-side only**
 
-## License
+The spec asks the driver to write the current balloon size back to
+the device-config `actual` field (Virtio 1.1 §5.5.6.1). The driver
+tracks `Actual` on the driver side rather than writing it back to the
+device config.
+{{< /callout >}}
+
+## License {#license}
 
 BSD-3-Clause.

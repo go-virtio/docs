@@ -1,4 +1,9 @@
-# fs — virtio-fs
+---
+title: "fs — virtio-fs"
+weight: 120
+---
+
+# fs — virtio-fs {#fs-virtio-fs}
 
 `github.com/go-virtio/fs` is a pure-Go virtio-fs (FUSE-over-virtio) guest
 driver for the standard PCI-bound device (VID 0x1AF4, DID 0x105A — device
@@ -6,9 +11,9 @@ type 26). It implements the modern-transport (Virtio 1.0+) init sequence,
 the request virtqueue, and the FUSE-over-virtio wire framing. CGO=0, no
 architecture-specific assembly, 100% statement test coverage.
 
-## Scope
+## Scope {#scope}
 
-Like [`blk`](blk.md), this package owns device bring-up, a request
+Like [`blk`]({{< relref "blk.md" >}}), this package owns device bring-up, a request
 virtqueue, and the on-the-wire request format. For virtio-fs the request
 is a FUSE message carried as a descriptor chain (Virtio 1.2 §5.11.6):
 
@@ -31,10 +36,13 @@ Linux `include/uapi/linux/fuse.h`.
 is a three-region descriptor chain (readable header + data, writable
 reply).
 
-!!! note "Validated against a real virtiofsd"
-    v0.2.1 fixes a `fuse_attr` struct-size bug found by real-virtiofsd
-    validation — the kind of bug a fake-device unit test cannot catch.
+{{< callout type="info" >}}
+**Validated against a real virtiofsd**
 
-## License
+v0.2.1 fixes a `fuse_attr` struct-size bug found by real-virtiofsd
+validation — the kind of bug a fake-device unit test cannot catch.
+{{< /callout >}}
+
+## License {#license}
 
 BSD-3-Clause.

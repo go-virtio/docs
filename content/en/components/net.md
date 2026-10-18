@@ -1,4 +1,9 @@
-# net — virtio-net
+---
+title: "net — virtio-net"
+weight: 60
+---
+
+# net — virtio-net {#net-virtio-net}
 
 `github.com/go-virtio/net` is a pure-Go virtio-net driver for the
 standard PCI-bound virtio-net device (VID 0x1AF4, DID 0x1041). It
@@ -8,10 +13,10 @@ split-virtqueue TX/RX path.
 This package owns the spec-level driver — the per-frame header layout,
 the feature-acceptance mask, the init sequence (Virtio 1.1 §3.1.1), and
 the rxq/txq state machine — and routes every transport-level operation
-through [`common`](common.md)'s `Transport` interface. It is the
+through [`common`]({{< relref "common.md" >}})'s `Transport` interface. It is the
 reference per-device-class driver the other drivers mirror.
 
-## Quick start
+## Quick start {#quick-start}
 
 ```go
 import virtionet "github.com/go-virtio/net"
@@ -27,6 +32,6 @@ if err := vn.TransmitFrame(ethFrame); err != nil {
 frame, err := vn.ReceiveFrame(10000) // poll budget
 ```
 
-## License
+## License {#license}
 
 BSD-3-Clause.
