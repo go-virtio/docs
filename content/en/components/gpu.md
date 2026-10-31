@@ -81,9 +81,17 @@ frame, err := e.Frame()
 err = g.SubmitWebGPUBatch(1, frame, virtiogpu.Fence{On: true, ID: 1})
 ```
 
-**Status: unvalidated.** No host implements this capset yet, so it has
-been tested only against the in-process fake device. The design doc
-covers the protocol, the security model and a WebGPU-backed 2D scanout:
+**Status.** The host is [gpudev]({{< relref "gpudev.md" >}}).
+
+- **Validated in process:** the guest calls above run against gpudev
+  over an emulated virtio-pci transport.
+- **Validated in a browser on a real GPU** (Apple Metal, and macOS CI
+  with a GPU required): a compute pipeline built by descriptor doubles a
+  buffer.
+- **Not yet validated:** running under a hypervisor.
+
+The design doc covers the protocol, the security model and the full
+validation table:
 [docs/WEBGPU.md](https://github.com/go-virtio/gpu/blob/main/docs/WEBGPU.md).
 
 ## License {#license}
