@@ -56,6 +56,36 @@ explicit:
   [`validate`]({{< relref "validate.md" >}}) harness.
 - **Vulkan / Venus.** handled by the separate [`venus`]({{< relref "venus.md" >}}) module.
 
+## WebGPU over virtio: `webgpu-batch` (experimental) {#webgpu-batch}
+
+`webgpu-batch` is a private context type that carries
+[go-gfx/webgpu](https://github.com/go-gfx/webgpu) Recorder streams from a
+guest to a host, which replays them on WebGPU. It is the WebGPU analogue
+of Venus. It uses capset **30**, an id the virtio spec has not assigned;
+the design doc gives the reasons for that choice.
+
+- `gpu/wgpubatch` holds the capset blob and the frame that rides in
+  `SUBMIT_3D`: an encoder and a fuzzed decoder that guest and host share.
+- `OpenVirtioGPUWebGPUBatch`, `WebGPUBatchCaps`,
+  `CreateWebGPUBatchContext` and `SubmitWebGPUBatch` (with fences and
+  ring indices) are the guest calls.
+
+```go
+g, err := virtiogpu.OpenVirtioGPUWebGPUBatch(transport)
+caps, err := g.WebGPUBatchCaps()          // ErrWebGPUBatchUnavailable if not offered
+err = g.CreateWebGPUBatchContext(1, "app")
+
+e := wgpubatch.NewEncoder(caps.MaxFrame)
+e.Stream(words, data)                      // one go-gfx/webgpu Recorder submit
+frame, err := e.Frame()
+err = g.SubmitWebGPUBatch(1, frame, virtiogpu.Fence{On: true, ID: 1})
+```
+
+**Status: unvalidated.** No host implements this capset yet, so it has
+been tested only against the in-process fake device. The design doc
+covers the protocol, the security model and a WebGPU-backed 2D scanout:
+[docs/WEBGPU.md](https://github.com/go-virtio/gpu/blob/main/docs/WEBGPU.md).
+
 ## License {#license}
 
 BSD-3-Clause.
