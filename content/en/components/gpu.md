@@ -81,6 +81,14 @@ frame, err := e.Frame()
 err = g.SubmitWebGPUBatch(1, frame, virtiogpu.Fence{On: true, ID: 1})
 ```
 
+**Capset version 2 (gpu v0.10.0).** `wgpubatch.CapsVersion` is 2 and the
+blob is 64 bytes. It adds the adapter's features (`FeatureShaderF16`,
+`FeatureSubgroups`) and its limits in `Caps.Device` (`DeviceLimits`:
+`maxStorageBufferBindingSize`, `maxComputeWorkgroupStorageSize`,
+`maxComputeInvocationsPerWorkgroup`, `maxComputeWorkgroupsPerDimension`,
+`maxStorageBuffersPerShaderStage`). A version 1 blob still decodes, and
+frames stay at frame version 1.
+
 **Status.** The host is [gpudev]({{< relref "gpudev.md" >}}).
 
 - **Validated in process:** the guest calls above run against gpudev
