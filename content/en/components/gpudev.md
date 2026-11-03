@@ -38,7 +38,16 @@ fb.Flush()
   descriptors, and streams are submitted with `Device.Replay`. Guest
   object ids are private to their context and are translated before the
   backend sees them. A stream can only name objects its own context
-  holds.
+  holds. Since v0.2.0 the id table and the create, destroy and stream
+  semantics are go-gfx/webgpu's `batch.Context` (webgpu v0.7.0), shared
+  with every other transport; gpudev keeps the virtio framing,
+  `BIND_RESOURCE` and the device limits, and `webgpuback.Context` is
+  `batch.DeviceBackend` plus `Bind`.
+- **Read-back.** go-gfx/webgpu v0.7.0 adds `wire.ReadBuffer` (stream
+  version 4), a bounded read window per submit. This transport has no read
+  window yet, so gpudev refuses a stream that reads back (`batch.ErrRead`)
+  instead of ignoring it: the context is lost. Tracked in
+  [go-virtio/gpudev#10](https://github.com/go-virtio/gpudev/issues/10).
 
 ## Security {#security}
 
